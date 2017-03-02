@@ -1,0 +1,5 @@
+0	take a nap
+1	study heap-based priority queue
+3	do assignment 5
+45	walk the dog
+101	review trees for Midterm 2
