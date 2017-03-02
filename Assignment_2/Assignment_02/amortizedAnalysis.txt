@@ -1,0 +1,59 @@
+#Author: Carlos Carrillo
+#Date:   01/20/2016
+#CS_261
+#Description: Amortized Analysis of the Dynamic Array 
+
+1. How many cost units are spent in the entire process of performing 32 consecutive push operations on an empty array which starts out at capacity 8, assuming that the array will double in capacity each time a new item is added to an already full dynamic array? As N (i.e.: the number of pushes) grows large, under this strategy for resizing, what is the big-oh complexity for a push? 
+
+Answer: The entire process spent this number of units:
+
+8 items			8
+double to 16		0
+copy 8 + 8		16
+double to 32		0
+copy 16 + 16		32
+
+total = 		56 Cost Units
+
+The algorithmic complexity of this operation (push) is O(1)+ since it runs in constant time so it requires the same amount of time regardless of the input size. Also ‘+’ has to be added since the execution time bound is not a guaranteed. 
+
+2. How many cost units are spent in the entire process of performing 32 consecutive push operations on an empty array which starts out at capacity 8, assuming that the array will grow by a constant 2 spaces each time a new item is added to an already full dynamic array? As N (i.e.: the number of pushes) grows large, under this strategy for resizing, what is the big-oh complexity for a push? 
+
+Answer: The entire process spent this number of units:
+
+8 items			8
+add 2, make 10		0
+copy 8 add 2		10
+add 2, make 12		0
+copy 10, add 2		12
+add 2, make 14		0
+copy 12, add 2		14
+add 2, make 16		0
+copy 14, add 2		16
+add 2, make 18		0
+copy 16, add 2		18
+add 2, make 20		0
+copy 18, add 2		20
+add 2, make 22		0
+copy 20, add 2		22
+add 2, make 24		0
+copy 22, add 2		24
+add 2, make 26		0
+copy 24, add 2		26
+add 2, make 28		0
+copy 26, add 2		28
+add 2, make 30		0
+copy 28, add 2		30
+add 2, make 32		0
+copy 30, add 2		32
+
+total = 		260 Cost Units
+
+The algorithmic complexity of this operation (push) is O(n) since execution time is directly proportional to the input size. So in this case, time grows linearly as input size increases. 
+
+3. Suppose that a dynamic array stack doubles its capacity when it is full, and shrinks (on Pop only) its capacity by half when the array is half full or less. Can you devise a sequence of N push() and pop() operations which will result in poor performance (O(N^2) total cost)? How might you adjust the array's shrinking policy to avoid this? (Hint: You may assume that the initial capacity of the array is N/2.)
+
+Answer: A possible sequence would be pushing values first onto the stack until it reaches its limit capacity and double it. Then, a value can be popped from the stack, which will cause the size to drop below half of the capacity, which make the capacity be cut in half. This way, we would have a poor performance close to O(N^2).
+
+In order to avoid this, the array's shrinking policy could be stated as: Reduce capacity by 50% (c/2) when at least 25% (c/4) of dynamic array capacity is full.
+
